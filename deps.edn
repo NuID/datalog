@@ -2,13 +2,13 @@
  {org.clojure/clojure {:mvn/version "1.10.1"},
   nuid/elliptic
   {:git/url "https://github.com/nuid/elliptic.git",
-   :sha "c03cc1a272d00d0c0ca066016dbefff1559b06e5"},
+   :sha "68ffb6ad16a9c23f0d1d4ee3db2bd9af208eadb6"},
   nuid/cryptography
   {:git/url "https://github.com/nuid/cryptography.git",
-   :sha "95ddb12ca3fc559a8c5e24b86d365399fba9360f"},
+   :sha "654857361a87d9559d764a30bfc866223125577a"},
   nuid/ethereum
   {:git/url "https://github.com/nuid/ethereum.git",
-   :sha "260c81f7ca0d704d07824f9f06fae1a06ffea208"}},
+   :sha "0fb6fc78e4a524a6fd2ec09fa59f04156b656cc8"}},
  :aliases
  {:cljs
   {:extra-deps
