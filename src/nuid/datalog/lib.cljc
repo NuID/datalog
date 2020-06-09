@@ -17,6 +17,8 @@
    x))
 
 (def ->data
+  "Removes datalog-specific
+  keys from nested structure"
   (partial
    walk/postwalk
    -postwalk->data))
