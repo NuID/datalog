@@ -1,14 +1,17 @@
 {:deps
  {org.clojure/clojure {:mvn/version "1.10.1"},
+  nuid/ident
+  {:git/url "https://github.com/nuid/ident.git",
+   :sha "56e386f70036b2bd09d32b23b6ea711434d7b196"},
   nuid/elliptic
   {:git/url "https://github.com/nuid/elliptic.git",
-   :sha "c03cc1a272d00d0c0ca066016dbefff1559b06e5"},
-  nuid/cryptography
-  {:git/url "https://github.com/nuid/cryptography.git",
-   :sha "95ddb12ca3fc559a8c5e24b86d365399fba9360f"},
+   :sha "8b2d1aaa03475b47e385f63891801ee5657f6ce3"},
   nuid/ethereum
   {:git/url "https://github.com/nuid/ethereum.git",
-   :sha "260c81f7ca0d704d07824f9f06fae1a06ffea208"}},
+   :sha "aed96fcd63175de04eae3fc62a0a4a2c718c16af"},
+  nuid/cryptography
+  {:git/url "https://github.com/nuid/cryptography.git",
+   :sha "13b6b7696c220126b532a6bc233434251f513442"}},
  :aliases
  {:cljs
   {:extra-deps

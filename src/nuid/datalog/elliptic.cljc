@@ -1,25 +1,28 @@
 (ns nuid.datalog.elliptic
   (:require
    [nuid.datalog.lib :as lib]
-   [nuid.elliptic.curve :as curve]))
+   [nuid.ident.elliptic :as ident.elliptic]))
 
 (def idents
-  (mapv lib/->ident curve/ids))
+  (into
+   []
+   (map lib/->ident)
+   ident.elliptic/curve-ids))
 
 (def attributes
-  [{:db/ident       ::curve/point
-    :db/valueType   :db.type/string
+  [{:db/ident       :nuid.elliptic.curve/id
+    :db/valueType   :db.type/ref
     :db/cardinality :db.cardinality/one
-    :db/unique      :db.unique/identity
-    :db/doc         "Encoded elliptic curve point"}
+    :db/doc         "Elliptic curve identifier"}
 
-   {:db/ident       ::curve/parameters
+   {:db/ident       :nuid.elliptic.curve/parameters
     :db/valueType   :db.type/ref
     :db/cardinality :db.cardinality/one
     :db/isComponent true
     :db/doc         "Elliptic curve parameters"}
 
-   {:db/ident       ::curve/id
-    :db/valueType   :db.type/ref
+   {:db/ident       :nuid.elliptic.curve/point
+    :db/valueType   :db.type/string
     :db/cardinality :db.cardinality/one
-    :db/doc         "Elliptic curve identifier"}])
+    :db/unique      :db.unique/identity
+    :db/doc         "Encoded elliptic curve point"}])
