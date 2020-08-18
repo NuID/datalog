@@ -22,3 +22,17 @@
   (partial
    walk/postwalk
    -postwalk->data))
+
+(defn -postwalk<-ident
+  [x]
+  (or
+   (and
+    (map? x)
+    (:db/ident x))
+   x))
+
+(def <-ident
+  "Consumes nested :db/ident from datomic results"
+  (partial
+   walk/postwalk
+   -postwalk<-ident))
