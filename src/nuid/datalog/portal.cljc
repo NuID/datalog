@@ -3,7 +3,8 @@
    [nuid.datalog.credential :as credential]))
 
 (def notification-template-enums
-  [{:db/ident :nuid.portal.email/credential-rotated}
+  [{:db/ident :nuid.portal.email/credential-lost}
+   {:db/ident :nuid.portal.email/credential-rotated}
    {:db/ident :nuid.portal.email/verify-email-address}])
 
 (def attributes
