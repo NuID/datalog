@@ -1,6 +1,7 @@
 (ns nuid.datalog.portal
   (:require
-   [nuid.datalog.credential :as credential]))
+   [nuid.datalog.credential :as credential]
+   [nuid.datalog.paypal :as paypal]))
 
 (def notification-template-enums
   [{:db/ident :nuid.portal.email/credential-lost}
@@ -67,23 +68,16 @@
    {:db/ident       :nuid.portal.notification/addresses
     :db/valueType   :db.type/ref
     :db/cardinality :db.cardinality/many
-    :db/doc         "List of notification addresses"}])
+    :db/doc         "List of notification addresses"}
 
-#_(def org
-    [{:db/ident       :nuid.portal/developers
-      :db/valueType   :db.type/ref
-      :db/cardinality :db.cardinality/many
-      :db/isComponent true
-      :db/doc         "Set of [[:nuid.portal/developer]]s"}
-
-     {:db/ident       :nuid.portal.org/administrators
-      :db/valueType   :db.type/ref
-      :db/cardinality :db.cardinality/many
-      :db/isComponent true
-      :db/doc         "Administrators of a [[:nuid.portal/org]]"}])
+   {:db/ident       :nuid.portal/subscriptions
+    :db/valueType   :db.type/ref
+    :db/cardinality :db.cardinality/many
+    :db/doc         "Set of [[:nuid.portal/subscription]]s"}])
 
 (def schema
   (concat
    notification-template-enums
    attributes
+   paypal/attributes
    credential/schema))
