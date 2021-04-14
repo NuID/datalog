@@ -8,7 +8,7 @@
    :sha "55935a4471d8922c3ecc80c6fc8c1e2ef42fc59e"},
   nuid/ethereum
   {:git/url "https://github.com/nuid/ethereum.git",
-   :sha "4a7f85545a964bbbde0465ab82955ab2d7c9716b"},
+   :sha "c77e3b0c83ba33b472af3e91ad0e0ba4d3c2c11a"},
   nuid/cryptography
   {:git/url "https://github.com/nuid/cryptography.git",
    :sha "487c4d6453c8124afb0c58726c46cea76496a111"}},
