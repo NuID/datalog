@@ -5,13 +5,13 @@
    :sha "f4b9ef164b175f515f032aa194a17727d71eedb4"},
   nuid/elliptic
   {:git/url "https://github.com/nuid/elliptic.git",
-   :sha "55935a4471d8922c3ecc80c6fc8c1e2ef42fc59e"},
+   :sha "0c573a0bfc5ecf3792d5d2fd63b8e82b544fbe9e"},
   nuid/ethereum
   {:git/url "https://github.com/nuid/ethereum.git",
-   :sha "0c3eed2d918faa0214462026fe6f92d7afcb822c"},
+   :sha "dac3d23f4353515219255c7205a7ea48ec376f55"},
   nuid/cryptography
   {:git/url "https://github.com/nuid/cryptography.git",
-   :sha "487c4d6453c8124afb0c58726c46cea76496a111"}},
+   :sha "4d372c8fe7a663c25cd92928a913e29a9c9b850b"}},
  :aliases
  {:cljs {:extra-deps {thheller/shadow-cljs {:mvn/version "2.11.23"}}}},
  :paths ["src"]}
