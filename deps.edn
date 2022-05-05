@@ -11,7 +11,7 @@
    :sha "dac3d23f4353515219255c7205a7ea48ec376f55"},
   nuid/cryptography
   {:git/url "https://github.com/nuid/cryptography.git",
-   :sha "4d372c8fe7a663c25cd92928a913e29a9c9b850b"}},
+   :sha "46667476309e5d0172a447851c205222491441a1"}},
  :aliases
  {:cljs {:extra-deps {thheller/shadow-cljs {:mvn/version "2.11.23"}}}},
  :paths ["src"]}
