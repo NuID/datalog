@@ -1,85 +1,38 @@
 (ns nuid.datalog.portal
   (:require
-   [nuid.datalog.credential :as credential]
-   [nuid.datalog.paypal :as paypal]))
-
-(def notification-template-enums
-  [{:db/ident :nuid.portal.email/credential-lost}
-   {:db/ident :nuid.portal.email/credential-rotated}
-   {:db/ident :nuid.portal.email/developer-retracted}
-   {:db/ident :nuid.portal.email/email-address-rotated}
-   {:db/ident :nuid.portal.email/verify-email-address}])
+   [nuid.datalog.credential :as credential]))
 
 (def attributes
-  [{:db/ident       :nuid.auth-api/api-keys
+  [{:db/ident       :nuid.auth-api/api-key
     :db/valueType   :db.type/ref
-    :db/cardinality :db.cardinality/many
+    :db/cardinality :db.cardinality/one
     :db/isComponent true
-    :db/doc         "Set of [[:nuid.auth-api/api-key]]s"}
+    :db/doc         "The [[:nuid.auth-api/api-key]] entity for accessing the Auth API"}
 
-   {:db/ident       :nuid.aws.api-gateway.api-key/id
+   {:db/ident       :nuid.auth-api.api-key/value
     :db/valueType   :db.type/string
     :db/cardinality :db.cardinality/one
     :db/unique      :db.unique/identity
-    :db/doc         "An [[:nuid.aws.api-gateway/api-key]] identifier"}
+    :db/doc         "API key value granting access to the Auth API"}
 
-   {:db/ident       :nuid.aws.api-gateway.api-key/value
-    :db/valueType   :db.type/string
-    :db/cardinality :db.cardinality/one
-    :db/unique      :db.unique/identity
-    :db/doc         "An [[:nuid.aws.api-gateway/api-key]] value"}
-
-   {:db/ident       :nuid/credentials
+   {:db/ident       :nuid/credential
     :db/valueType   :db.type/ref
-    :db/cardinality :db.cardinality/many
+    :db/cardinality :db.cardinality/one
     :db/isComponent true
-    :db/doc         "Set of [[:nuid/credential]]s"}
+    :db/doc         "The [[:nuid/credential]] authenticating a portal developer"}
 
-   {:db/ident       :nuid.portal.developer/hashed-email-address
+   {:db/ident       :nuid.portal/email-address
     :db/valueType   :db.type/string
     :db/cardinality :db.cardinality/one
     :db/unique      :db.unique/identity
-    :db/doc         "Pseudonymous identifier derived from an [[:email-address]]"}
+    :db/doc         "An [[:nuid.portal/email-address]] associated with a portal developer account"}
 
-   {:db/ident       :nuid.portal.email-address/verified?
+   {:db/ident       :nuid.portal.developer/verified?
     :db/valueType   :db.type/boolean
     :db/cardinality :db.cardinality/one
-    :db/doc         "Describes if the [[:email-address]] has been verified or not"}
-
-   {:db/ident       :nuid.portal.email/ident
-    :db/valueType   :db.type/ref
-    :db/cardinality :db.cardinality/one
-    :db/doc         "Ref to the email ident for this notification"}
-
-   {:db/ident       :nuid.portal.email/hash-key
-    :db/valueType   :db.type/string
-    :db/cardinality :db.cardinality/one
-    :db/unique      :db.unique/identity
-    :db/doc         "Hash of relevant template data to uniquely identify the email send"}
-
-   {:db/ident       :nuid.portal.email/sent-inst
-    :db/valueType   :db.type/instant
-    :db/cardinality :db.cardinality/one
-    :db/doc         "Instant for when the email was sent"}
-
-   {:db/ident       :nuid.portal/notifications
-    :db/valueType   :db.type/ref
-    :db/cardinality :db.cardinality/many
-    :db/doc         "Records of notifications sent"}
-
-   {:db/ident       :nuid.portal.notification/addresses
-    :db/valueType   :db.type/ref
-    :db/cardinality :db.cardinality/many
-    :db/doc         "List of notification addresses"}
-
-   {:db/ident       :nuid.portal/subscriptions
-    :db/valueType   :db.type/ref
-    :db/cardinality :db.cardinality/many
-    :db/doc         "Set of [[:nuid.portal/subscription]]s"}])
+    :db/doc         "Describes if the [[:nuid.portal/email-address]] has been verified or not"}])
 
 (def schema
   (concat
-   notification-template-enums
    attributes
-   paypal/attributes
    credential/schema))

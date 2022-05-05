@@ -1,12 +1,12 @@
 (ns nuid.datalog.elliptic
   (:require
-   [nuid.datalog.lib :as lib]
+   [nuid.datalog :as datalog]
    [nuid.ident.elliptic :as ident.elliptic]))
 
 (def idents
   (into
-   []
-   (map lib/->ident)
+   (vector)
+   (map datalog/ident)
    ident.elliptic/curve-ids))
 
 (def attributes

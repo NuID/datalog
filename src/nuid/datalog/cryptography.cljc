@@ -1,13 +1,13 @@
 (ns nuid.datalog.cryptography
   (:require
    [clojure.set :as set]
-   [nuid.datalog.lib :as lib]
+   [nuid.datalog :as datalog]
    [nuid.ident.cryptography :as ident.crypt]))
 
 (def idents
   (into
-   []
-   (map lib/->ident)
+   (vector)
+   (map datalog/ident)
    (set/union
     ident.crypt/hash-algorithms
     ident.crypt/string-normalization-forms)))

@@ -1,12 +1,12 @@
 (ns nuid.datalog.ethereum
   (:require
-   [nuid.datalog.lib :as lib]
+   [nuid.datalog :as datalog]
    [nuid.ident.ethereum :as ident.ethereum]))
 
 (def idents
   (into
-   []
-   (map lib/->ident)
+   (vector)
+   (map datalog/ident)
    ident.ethereum/networks))
 
 (def attributes
